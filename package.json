@@ -1,0 +1,29 @@
+{
+  "name": "cypress-webdriverio-appium-shopping",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["cypress-tests", "webdriverio-tests", "appium-tests"],
+  "scripts": {
+    "test:cypress": "cd cypress-tests && npx cypress run",
+    "test:webdriverio": "cd webdriverio-tests && npx wdio run wdio.conf.js",
+    "test:appium": "cd appium-tests && npx wdio run wdio.conf.js",
+    "runEmulator": "nohup /Users/vishakhaswamy/Library/Android/sdk/emulator/emulator -avd Pixel_8_Pro_API_VanillaIceCream &",
+    "startEmulatorAndRunTests": "npm run runEmulator && sleep 30 && ./wait-for-emulator.sh && npm run test:appium && adb -s emulator-5554 emu kill"
+  },
+  "dependencies": {
+    "allure": "^0.0.0",
+    "appium": "^2.0.1"
+  },
+  "devDependencies": {
+    "@wdio/allure-reporter": "^8.39.0",
+    "@wdio/appium-service": "^8.40.2",
+    "@wdio/cli": "^8.40.2",
+    "@wdio/cucumber-framework": "^8.40.2",
+    "@wdio/local-runner": "^8.40.2",
+    "@wdio/spec-reporter": "^8.39.0",
+    "allure-commandline": "^2.30.0",
+    "appium-uiautomator2-driver": "^3.7.6",
+    "ts-node": "^10.9.2",
+    "webdriverio": "^6.12.1"
+  }
+}
